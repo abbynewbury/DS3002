@@ -17,6 +17,7 @@ r = requests.get(csv_url)
 r.raise_for_status()
 # continues if request successful
 url_content = r.content
+# writing content to csv file
 csv_file = open('normaldata.csv', 'wb')
 csv_file.write(url_content)
 csv_file.close()
@@ -29,17 +30,14 @@ print(df.head())
 "Generate brief summary of data file:"
 record_count = len(df)
 column_count = len(df.columns)
-print(column_count)
-print(record_count)
+print("Column count: " + str(column_count))
+print("Record count: " + str(record_count))
 "So, there are 9 columns and 365 records"
 
 
 "Modify number of columns from source to destination by reducing columns"
-# dropping station and station name b/c only one unique value for both columns
-print(df['STATION'].unique())
-print(df['STATION_NAME'].unique())
-
-df.drop('STATION', inplace=True, axis=1)
+# dropping station name b/c only one unique value for column
+# print(df['STATION_NAME'].unique())
 df.drop('STATION_NAME', inplace=True, axis=1)
 
 "Convert to json and Write to disk"
@@ -49,7 +47,6 @@ df = df.to_json('normaldata.json')
 # checking json file written to disk correctly
 with open('normaldata.json','r') as json_file:
     loaded_json = json.load(json_file)
-    data_string = json.dumps(loaded_json)
     for key,value in loaded_json.items():
         print(key)
     json_file.close()
