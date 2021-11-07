@@ -3,7 +3,6 @@
 # -- Sheet --
 
 import requests
-import csv
 import pandas as pd
 import json
 
@@ -23,7 +22,7 @@ csv_file.write(url_content)
 csv_file.close()
 
 
-#reading in newly written csv, 
+#reading in newly written csv,
 df = pd.read_csv ('normaldata.csv')
 print(df.head())
 
