@@ -25,6 +25,7 @@ csv_file.close()
 
 #reading in newly written csv,
 df = pd.read_csv ('normaldata.csv')
+print("First 5 rows of csv file:")
 print(df.head())
 
 "Generate brief summary of data file:"
@@ -47,6 +48,7 @@ df = df.to_json('normaldata.json')
 # checking json file written to disk correctly
 with open('normaldata.json','r') as json_file:
     loaded_json = json.load(json_file)
+    print("Keys written to json file:")
     for key,value in loaded_json.items():
         print(key)
     json_file.close()
