@@ -53,5 +53,3 @@ with open('normaldata.json','r') as json_file:
     for key,value in loaded_json.items():
         print(key)
     json_file.close()
-
-
