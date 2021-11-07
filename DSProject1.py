@@ -31,6 +31,7 @@ file_exists = os.path.exists(path)
 if file_exists:
     # if it works, print first 5 rows of csv file
     df = pd.read_csv(path)
+    print("First 5 rows of csv file:")
     print(df.head())
 else:
     sys.exit('The file path for the csv was: ' + path + '. This path resulted in a file not found error.')
@@ -62,6 +63,7 @@ df = df.to_json('normaldata.json')
 with open('normaldata.json','r') as json_file:
     loaded_json = json.load(json_file)
     key_count = 0
+    print("Keys written to json file:")
     for key,value in loaded_json.items():
         print(key)
         key_count += 1
